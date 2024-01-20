@@ -480,35 +480,27 @@ a {
 
 /* Tabs */
 
-
 .range input[type="range"] {
   background-color: transparent;
-  /* removing default appearance */
   -webkit-appearance: none;
   appearance: none;
-  /* creating a custom design */
   width: 100%;
   cursor: pointer;
   outline: none;
   border-radius: 15px;
-
-  /* New additions */
   height: 4px;
   border: 1px solid #00ace1;
 }
 
 /* Thumb: webkit */
 .range input[type="range"]::-webkit-slider-thumb {
-  /* removing default appearance */
   -webkit-appearance: none;
   appearance: none;
-  /* creating a custom design */
   height: 20px;
   width: 20px;
   background-color: #00ace1;
   border-radius: 50%;
   border: none;
-  /* box-shadow: -407px 0 0 400px #f50; emove this line */
   transition: 0.2s ease-in-out;
 }
 
@@ -525,7 +517,6 @@ a {
 }
 
 /* Hover, active & focus Thumb: Webkit */
-
 .range input[type="range"]::-webkit-slider-thumb:hover {
   box-shadow: 0 0 0 10px rgba(255, 85, 0, 0.1);
 }
@@ -537,7 +528,6 @@ a {
 }
 
 /* Hover, active & focus Thumb: Firfox */
-
 .range input[type="range"]::-moz-range-thumb:hover {
   box-shadow: 0 0 0 10px rgba(255, 85, 0, 0.1);
 }
@@ -547,7 +537,6 @@ a {
 .range input[type="range"]:focus::-moz-range-thumb {
   box-shadow: 0 0 0 13px rgba(255, 85, 0, 0.2);
 }
-
 /*=============
 Aesthetics 
 =========================*/
@@ -594,6 +583,10 @@ Aesthetics
   font-size: 24px;
   color: #fff;
   margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .range__title span {
   font-family: "NEXT ART Bold";
@@ -1182,18 +1175,20 @@ Aesthetics
 }
 .login-block .form-group {
   margin-bottom: 50px;
-  margin-left: 42px;
 }
 .login-block .form-group input {
   border: none;
   padding: 0;
-  max-width: 234px;
+  max-width: 440px;
   width: 100%;
-  border-bottom: 1px solid #00ace1;
+  border: 1px solid #00ace1;
   transition: .3s all;
   font-size: 24px;
   font-weight: 600;
   color: #00ace1;
+  padding: 18px 30px;
+  border-radius: 50px;
+  box-sizing: border-box;
 }
 .login-block .form-group input::placeholder {
   font-size: 24px;
@@ -1214,7 +1209,8 @@ Aesthetics
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 440px;
+  max-width: 440px;
+  width: 100%;
   padding: 24px;
   background: #00ace1;
   border-radius: 50px;
@@ -1581,8 +1577,11 @@ Aesthetics
   .radio__price {
     font-size: 16px;
   }
+  .radio-list-right input[type="radio"] + label:before,
   .radio-list-right input:checked[type="radio"] + label::after {
-    top: 24px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
   }
   .income__checkbox-txt ul {
     gap: 16px;
@@ -1830,6 +1829,81 @@ Aesthetics
     justify-content: center;
   }
   .radio-list-right input[type="radio"] + label {
+    width: 90%;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  .cashback__info-txt {
+    flex-basis: 100%;
+  }
+  .cashback__social a svg {
+    width: 60px;
+    height: 60px;
+  }
+  .blog-slider__img .weapon-4 {
+    height: auto;
+    margin-top: 40px;
+    transform: scale(1.5);
+  }
+  .blog-slider__img .weapon-3,
+  .blog-slider__img .weapon-2,
+  .blog-slider__img .weapon-1 {
+    margin-top: -30px;
+  }
+  .hero {
+    padding: 30px 0 50px;
+  }
+  .hero__text {
+    padding-right: 0;
+  }
+ 
+  .radio__img img {
+    width: 30px;
+  }
+  .login-sec {
+    padding: 100px 0 200px;
+  }
+  .login-sec .x-shape {
+    top: -100px;
+  }
+  .login-sec .circle-shape {
+      right: auto;
+      left: 10px;
+      bottom: -160px;
+  }
+  .login-sec img.circle-shape {
+    width: 14%;
+  }
+  .login-block .form-group input,
+  .login-block .form-group input::placeholder {
+    font-size: 20px;
+  }
+  .login-block .form-group {
+    margin-bottom: 30px;
+  }
+  .form-btn button {
+    padding: 19px;
+    font-size: 20px;
+  }
+  .range__title span {
+    display: block;
+  }
+  .range-title-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 6px;
+  }
+  .title h2 {
+    margin-bottom: 30px;
+  }
+  .container {
+    padding: 0 20px;
+  }
+  .range {
     width: 90%;
   }
 }

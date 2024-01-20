@@ -39,23 +39,35 @@ var swiper = new Swiper(".blog-slider", {
 
 const sliderEl = document.querySelector("#range");
 const sliderValue = document.querySelector(".value");
-const sliderValueSub = document.querySelector(".range__title span");
+const sliderValueFive = document.querySelector(".five-x");
+const sliderValueTen = document.querySelector(".ten-x");
 
 sliderEl.addEventListener("input", (event) => {
   const tempSliderValue = event.target.value;
-  const tempSliderValueSub = event.target.value * 10;
+  const tempSliderValueFive = event.target.value * 5;
+  const tempSliderValueTen = event.target.value * 10;
 
   sliderValue.textContent = tempSliderValue;
 
   // Convert to string and replace commas with an empty space
-  const formattedValueSub = tempSliderValueSub
+  const formattedValueFive = tempSliderValueFive
     .toLocaleString("en-US", {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     })
     .replace(/,/g, " ");
 
-  sliderValueSub.textContent = formattedValueSub + "P.";
+  sliderValueFive.textContent = formattedValueFive + "P.";
+
+  // Convert to string and replace commas with an empty space
+  const formattedValueTen = tempSliderValueTen
+    .toLocaleString("en-US", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    })
+    .replace(/,/g, " ");
+
+  sliderValueTen.textContent = formattedValueTen + "P.";
 
   const progress = (tempSliderValue / sliderEl.max) * 100;
 

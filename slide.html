@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .range input[type="range"] {
+      background-color: transparent;
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      cursor: pointer;
+      outline: none;
+      border-radius: 15px;
+      height: 4px;
+      border: 1px solid #00ace1;
+    }
+
+    .range input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 20px;
+      width: 20px;
+      background-color: #00ace1;
+      border-radius: 50%;
+      border: none;
+      transition: 0.2s ease-in-out;
+    }
+
+    .range input[type="range"]::-moz-range-thumb {
+      height: 15px;
+      width: 15px;
+      background-color: #00ace1;
+      border-radius: 50%;
+      border: none;
+      transition: 0.2s ease-in-out;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="range">
+    <div class="range__value">
+      <div class="value">5 000</div>
+      <span>Р.</span>
+    </div>
+    <input type="range" min="5000" max="100000" step="100" value="5000" id="range" class="progress">
+    <p class="range__title">для этого вам понадобиться ~ <span>50 000 Р.</span></p>
+  </div>
+
+  <script>
+    const sliderEl = document.querySelector("#range");
+    const sliderValue = document.querySelector(".value");
+    const sliderValueSub = document.querySelector(".range__title span");
+
+    sliderEl.addEventListener("input", (event) => {
+    const tempSliderValue = event.target.value;
+    const tempSliderValueSub = event.target.value * 10;
+
+    sliderValue.textContent = tempSliderValue;
+
+    // Convert to string and replace commas with an empty space
+    const formattedValueSub = tempSliderValueSub
+        .toLocaleString("en-US", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+        })
+        .replace(/,/g, " ");
+
+    sliderValueSub.textContent = formattedValueSub + "P.";
+
+    const progress = (tempSliderValue / sliderEl.max) * 100;
+
+    sliderEl.style.background = `linear-gradient(to right, #00ace1 ${progress}%, #000 ${progress}%)`;
+    });
+  </script>
+</body>
+
+</html>
